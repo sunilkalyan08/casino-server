@@ -1,0 +1,39 @@
+development:
+  frontend:
+    sso_name: 'CASino'
+    footer_text: 'Powered by <a href="http://rbcas.com/">CASino</a>'
+  authenticators:
+
+########################################
+# LDAP
+########################################
+#    my_company_ldap:
+#      authenticator: 'LDAP'
+#      options:
+#        host: 'localhost'
+#        port: 636
+#        base: 'ou=people,dc=example,dc=com'
+#        username_attribute: 'uid'
+#        encryption: 'simple_tls'
+#        extra_attributes:
+#          email: 'mail'
+#          fullname: 'displayname'
+
+########################################
+#SQL (ActiveRecord authenticator)
+#######################################
+   CASinoApp:
+     authenticator: "ActiveRecord"
+     options:
+       connection:
+         adapter: "postgresql"
+         host: "localhost"
+         database: "my-casino_development"
+         username: "sunil"
+         password: "123"
+       table: "users"
+       username_column: "email"
+       password_column: "encrypted_password"
+       extra_attributes:
+         email: "email"
+         fullname: "email"
